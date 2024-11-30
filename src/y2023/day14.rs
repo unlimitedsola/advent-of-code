@@ -1,6 +1,7 @@
+use std::collections::HashMap;
+
 use indoc::indoc;
 use itertools::Itertools;
-use std::collections::HashMap;
 
 use crate::aoc::input;
 

@@ -1,8 +1,9 @@
+use std::ops::Neg;
+
 use indoc::indoc;
 use itertools::Itertools;
 use nalgebra::{vector, SMatrix, Vector2, Vector3, Vector6};
 use num::Zero;
-use std::ops::Neg;
 
 use crate::aoc::input;
 

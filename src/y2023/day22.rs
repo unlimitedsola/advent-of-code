@@ -1,6 +1,7 @@
+use std::cmp::{max, min};
+
 use indoc::indoc;
 use itertools::{Either, Itertools};
-use std::cmp::{max, min};
 
 use crate::aoc::input;
 

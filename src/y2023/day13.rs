@@ -1,6 +1,7 @@
+use std::iter::zip;
+
 use indoc::indoc;
 use itertools::Itertools;
-use std::iter::zip;
 
 use crate::aoc::input;
 

@@ -1,9 +1,10 @@
-use indoc::indoc;
-use itertools::Itertools;
-use rayon::prelude::*;
 use std::collections::HashMap;
 use std::ops::Index;
 use std::sync::Arc;
+
+use indoc::indoc;
+use itertools::Itertools;
+use rayon::prelude::*;
 
 use crate::aoc::input;
 

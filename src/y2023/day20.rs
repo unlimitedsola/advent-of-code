@@ -1,9 +1,10 @@
-use indoc::indoc;
-use itertools::Itertools;
-use num::integer::lcm;
 use std::cell::RefCell;
 use std::collections::{HashMap, VecDeque};
 use std::ops::DerefMut;
+
+use indoc::indoc;
+use itertools::Itertools;
+use num::integer::lcm;
 
 use crate::aoc::input;
 

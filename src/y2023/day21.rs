@@ -1,8 +1,9 @@
+use std::collections::{HashSet, VecDeque};
+use std::ops::{Deref, DerefMut, Index};
+
 use indoc::indoc;
 use itertools::Itertools;
 use polyfit_rs::polyfit_rs::polyfit;
-use std::collections::{HashSet, VecDeque};
-use std::ops::{Deref, DerefMut, Index};
 
 use crate::aoc::input;
 
