@@ -11,12 +11,14 @@ use reqwest::header::{COOKIE, USER_AGENT};
 use time::Month::December;
 use time::{Date, OffsetDateTime, PrimitiveDateTime, UtcOffset};
 
+#[allow(unused_macros)]
 macro_rules! input {
     () => {
         $crate::aoc::input_for_path(module_path!())
     };
 }
 
+#[allow(unused_imports)]
 pub(crate) use input;
 
 static PARSE_PATH: LazyLock<Regex> =
