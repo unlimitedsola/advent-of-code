@@ -1,0 +1,19 @@
+[package]
+name = "advent-of-code"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.93"
+time = "0.3.36"
+reqwest = { version = "0.12.9", features = ["blocking"] }
+itertools = "0.13.0"
+num = "0.4.3"
+grid = "0.15.0"
+rayon = "1.10.0"
+polyfit-rs = "0.2.1"
+nalgebra = "0.33.2"
+petgraph = "0.6.5"
+rustworkx-core = "0.15.1"
+regex = "1.11.1"
+indoc = "2.0.5"
