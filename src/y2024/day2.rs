@@ -1,3 +1,4 @@
+use std::cmp::Reverse;
 use std::str::FromStr;
 
 use indoc::indoc;
@@ -18,14 +19,11 @@ fn parse(input: &str) -> Vec<Vec<u32>> {
 }
 
 fn safe(num: &[u32]) -> bool {
-    let sorted = num.is_sorted() || num.is_sorted_by(|a, b| a >= b);
-    if !sorted {
-        return false;
-    }
-    num.iter().tuple_windows().all(|(&a, &b)| {
-        let diff = a.abs_diff(b);
-        (1u32..=3).contains(&diff)
-    })
+    (num.is_sorted() || num.is_sorted_by_key(Reverse))
+        && num
+            .iter()
+            .tuple_windows()
+            .all(|(&a, &b)| (1u32..=3).contains(&a.abs_diff(b)))
 }
 
 fn safe_p2(num: &[u32]) -> bool {
