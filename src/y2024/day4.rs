@@ -44,6 +44,7 @@ fn xmas_count(grid: &Grid<char>, (x, y): (usize, usize)) -> u32 {
     cnt
 }
 
+// continue in the same direction and try to find 'A' and 'S'
 fn has_xmas(grid: &Grid<char>, (mut x, mut y): (isize, isize), (dx, dy): (isize, isize)) -> bool {
     x += dx;
     y += dy;
@@ -84,7 +85,6 @@ fn p2(grid: &Grid<char>) -> u32 {
 
 fn has_x_mas(grid: &Grid<char>, (x, y): (usize, usize)) -> bool {
     let mut chars = vec![];
-    // find 'M' in 8 directions
     for dx in -1..=1 {
         for dy in -1..=1 {
             if dx == 0 && dy == 0 {
