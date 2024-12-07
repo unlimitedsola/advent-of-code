@@ -3,13 +3,13 @@ use itertools::Itertools;
 
 use crate::aoc::input;
 
-fn parse(input: &str) -> Vec<(i64, Vec<i64>)> {
+fn parse(input: &str) -> Vec<(u64, Vec<u64>)> {
     input
         .lines()
         .map(|line| {
             let (v, n) = line.split_once(": ").unwrap();
-            let v: i64 = v.parse().unwrap();
-            let n: Vec<i64> = n
+            let v: u64 = v.parse().unwrap();
+            let n: Vec<u64> = n
                 .split_ascii_whitespace()
                 .map(|n| n.parse().unwrap())
                 .collect_vec();
@@ -24,8 +24,8 @@ fn part1() {
     dbg!(solve(&eqs, false));
 }
 
-fn solve(eqs: &[(i64, Vec<i64>)], p2: bool) -> i64 {
-    let sum: i64 = eqs
+fn solve(eqs: &[(u64, Vec<u64>)], p2: bool) -> u64 {
+    let sum: u64 = eqs
         .iter()
         .filter(|(v, n)| solvable(*v, n[0], &n[1..], p2))
         .map(|(v, _)| *v)
@@ -33,13 +33,13 @@ fn solve(eqs: &[(i64, Vec<i64>)], p2: bool) -> i64 {
     sum
 }
 
-fn solvable(v: i64, acc: i64, n: &[i64], p2: bool) -> bool {
-    if n.is_empty() {
-        return if v == acc { true } else { false };
-    }
-    solvable(v, acc * n[0], &n[1..], p2)
-        || solvable(v, acc + n[0], &n[1..], p2)
-        || (p2 && solvable(v, format!("{}{}", acc, n[0]).parse().unwrap(), &n[1..], p2))
+fn solvable(v: u64, acc: u64, n: &[u64], p2: bool) -> bool {
+    let [n, rest @ ..] = n else {
+        return v == acc;
+    };
+    solvable(v, acc * n, rest, p2)
+        || solvable(v, acc + n, rest, p2)
+        || (p2 && solvable(v, acc * 10u64.pow(n.ilog10() + 1) + n, rest, p2))
 }
 
 #[test]
