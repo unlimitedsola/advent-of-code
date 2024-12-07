@@ -27,7 +27,12 @@ fn part1() {
 fn solve(eqs: &[(u64, Vec<u64>)], p2: bool) -> u64 {
     let sum: u64 = eqs
         .iter()
-        .filter(|(v, n)| solvable(*v, n[0], &n[1..], p2))
+        .filter(|(v, n)| {
+            let [n, rest @ ..] = n.as_slice() else {
+                unreachable!()
+            };
+            solvable(*v, *n, rest, p2)
+        })
         .map(|(v, _)| *v)
         .sum();
     sum
