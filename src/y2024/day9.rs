@@ -1,18 +1,7 @@
 use std::iter::repeat_n;
 use std::num::NonZeroU64;
 
-use grid::Grid;
-use itertools::Itertools;
-
 use crate::aoc::input;
-
-fn parse(input: &str) -> Grid<char> {
-    input
-        .lines()
-        .map(|line| line.chars().collect_vec())
-        .collect_vec()
-        .into()
-}
 
 #[test]
 fn part1() {
