@@ -95,10 +95,10 @@ fn calc_corners(grid: &Grid<char>, pos: (isize, isize), c: char) -> u64 {
     let mut corners = 0u64;
     for dir in [(0, 1), (0, -1), (1, 0), (-1, 0)] {
         let y_dir = rotate_right(dir);
-        let d_dir = (dir.0 + y_dir.0, dir.1 + y_dir.1);
-        let x = (pos.0 + dir.0, pos.1 + dir.1);
-        let y = (pos.0 + y_dir.0, pos.1 + y_dir.1);
-        let d = (pos.0 + d_dir.0, pos.1 + d_dir.1);
+        let d_dir = tuple_plus(dir, y_dir);
+        let x = tuple_plus(pos, dir);
+        let y = tuple_plus(pos, y_dir);
+        let d = tuple_plus(pos, d_dir);
         let x = grid.get(x.0, x.1).copied();
         let y = grid.get(y.0, y.1).copied();
         let d = grid.get(d.0, d.1).copied();
@@ -109,6 +109,10 @@ fn calc_corners(grid: &Grid<char>, pos: (isize, isize), c: char) -> u64 {
     }
     // println!("{}@{:?}={}", c, pos, corners);
     corners
+}
+
+fn tuple_plus(a: (isize, isize), b: (isize, isize)) -> (isize, isize) {
+    (a.0 + b.0, a.1 + b.1)
 }
 
 fn rotate_right(dir: (isize, isize)) -> (isize, isize) {
