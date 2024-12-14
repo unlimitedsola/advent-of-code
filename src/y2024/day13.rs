@@ -1,13 +1,8 @@
-use std::collections::HashSet;
-
-use crate::aoc::input;
-use grid::Grid;
 use indoc::indoc;
-use itertools::Itertools;
-use nalgebra::{matrix, RowVector2, Vector2};
-use num::integer::gcd;
 use num::rational::Ratio;
 use regex::Regex;
+
+use crate::aoc::input;
 
 #[test]
 fn part1() {
