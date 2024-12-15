@@ -35,7 +35,7 @@ fn solve1(input: &str) -> u64 {
             let b2 = tuple_plus(b, d);
             let a2 = tuple_minus(a, d);
             for p in [a2, b2] {
-                if let Some(v) = grid.get_mut(p.0, p.1) {
+                if grid.get_mut(p.0, p.1).is_some() {
                     loc_map.insert(p);
                 }
             }

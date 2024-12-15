@@ -69,15 +69,16 @@ fn pulse1(mm: &HashMap<&str, Module>, cnt: &mut Counter) {
     }
 }
 
-fn solve2(modules: &HashMap<&str, Module>) -> usize {
-    impl<'a> ModuleType<'a> {
-        fn conj_states(&self) -> &HashMap<&'a str, bool> {
-            match self {
-                ModuleType::Conjunction { states } => states,
-                _ => unreachable!(),
-            }
+impl<'a> ModuleType<'a> {
+    fn conj_states(&self) -> &HashMap<&'a str, bool> {
+        match self {
+            ModuleType::Conjunction { states } => states,
+            _ => unreachable!(),
         }
     }
+}
+
+fn solve2(modules: &HashMap<&str, Module>) -> usize {
     let rx_conj = &modules
         .values()
         .filter(|m| m.dst.contains(&"rx"))

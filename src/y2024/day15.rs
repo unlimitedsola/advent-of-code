@@ -136,7 +136,7 @@ fn tick2(grid: &mut Grid<char>, s_pos: (isize, isize), dir: (isize, isize)) -> (
 
     let mut to_remove = vec![];
 
-    for (pos, c) in to_push.iter_mut() {
+    for (pos, _) in to_push.iter_mut() {
         let to_set = v2p(*pos, dir);
         match grid.get(to_set.0, to_set.1) {
             Some('#') => return s_pos,

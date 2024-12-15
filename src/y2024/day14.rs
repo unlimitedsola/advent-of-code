@@ -7,7 +7,7 @@ use crate::aoc::input;
 
 #[test]
 fn part1() {
-    dbg!(solve(&input!(), (101, 103), false));
+    dbg!(solve(&input!(), (101, 103)));
 }
 
 type Robot = [i64; 4];
@@ -29,7 +29,7 @@ fn parse(input: &str) -> Vec<Robot> {
         .collect_vec()
 }
 
-fn solve(input: &str, (gx, gy): (i64, i64), p2: bool) -> u64 {
+fn solve(input: &str, (gx, gy): (i64, i64)) -> u64 {
     let robots = parse(input);
     let [mx, my] = [gx / 2, gy / 2];
     let mut quadrants = [0u64; 4]; // [top-left, top-right, bottom-left, bottom-right]
@@ -68,10 +68,10 @@ fn tick(robot: Robot, time: i64, (gx, gy): (i64, i64)) -> [i64; 2] {
 
 #[test]
 fn part2() {
-    dbg!(solve2(&input!(), (101, 103), true));
+    dbg!(solve2(&input!(), (101, 103)));
 }
 
-fn solve2(input: &str, (gx, gy): (i64, i64), p2: bool) -> u64 {
+fn solve2(input: &str, (gx, gy): (i64, i64)) -> u64 {
     let robots = parse(input);
     let mut time = 0i64;
     loop {
@@ -117,6 +117,6 @@ const EXAMPLE: &str = indoc! {"
 
 #[test]
 fn test_example() {
-    assert_eq!(solve(EXAMPLE, (11, 7), false), 12);
+    assert_eq!(solve(EXAMPLE, (11, 7)), 12);
     // assert_eq!(solve(EXAMPLE, (11, 7), true), 0);
 }
