@@ -1,10 +1,5 @@
-use grid::Grid;
 use indoc::indoc;
 use itertools::Itertools;
-use num::pow;
-use pathfinding::prelude::{astar_bag, dijkstra};
-use std::collections::HashSet;
-use std::io::Write;
 
 use crate::aoc::input;
 
@@ -72,7 +67,7 @@ enum ExecResult {
 
 fn exec_ins(reg: &mut [u64], opcode: u64, operand: u64) -> ExecResult {
     match opcode {
-        0 => reg[0] = reg[0] >> combo_operand(reg, operand),
+        0 => reg[0] >>= combo_operand(reg, operand),
         1 => reg[1] ^= operand,
         2 => reg[1] = combo_operand(reg, operand) % 8,
         3 => {
@@ -80,7 +75,7 @@ fn exec_ins(reg: &mut [u64], opcode: u64, operand: u64) -> ExecResult {
                 return ExecResult::Jump(operand as usize);
             }
         }
-        4 => reg[1] = reg[1] ^ reg[2],
+        4 => reg[1] ^= reg[2],
         5 => return ExecResult::Output(combo_operand(reg, operand) % 8),
         6 => reg[1] = reg[0] >> combo_operand(reg, operand),
         7 => reg[2] = reg[0] >> combo_operand(reg, operand),
