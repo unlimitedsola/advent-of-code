@@ -88,7 +88,7 @@ fn part2() {
 }
 
 fn solve2(input: &str) -> u64 {
-    let mut grid = parse(input);
+    let grid = parse(input);
     let start = find(&grid, 'S');
     let end = find(&grid, 'E');
 
@@ -113,7 +113,7 @@ fn solve2(input: &str) -> u64 {
         |&(p, _)| p == end,
     );
 
-    let (solves, cost) = path.unwrap();
+    let (solves, _cost) = path.unwrap();
     let nodes = solves.flatten().map(|(p, _)| p).collect::<HashSet<_>>();
     nodes.len() as u64
 }
