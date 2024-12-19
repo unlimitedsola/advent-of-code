@@ -147,7 +147,7 @@ impl<'a> Module<'a> {
             .map(ModuleType::parse)
             .map(RefCell::new)
             .unwrap();
-        let name = m.trim_start_matches(|c| c == '%' || c == '&');
+        let name = m.trim_start_matches(['%', '&']);
         Self { name, typ, dst }
     }
 }

@@ -9,12 +9,12 @@ fn part1() {
     dbg!(solve1(&input!()));
 }
 
-fn parse(input: &str) -> (Vec<String>, Vec<String>) {
+fn parse(input: &str) -> (Vec<&str>, Vec<&str>) {
     let mut lines = input.lines();
     let patterns = lines.next().unwrap();
-    let patterns = patterns.split(", ").map(|s| s.to_owned()).collect_vec();
+    let patterns = patterns.split(", ").collect_vec();
     lines.next().unwrap();
-    let designs = lines.map(|s| s.to_owned()).collect_vec();
+    let designs = lines.collect_vec();
     (patterns, designs)
 }
 
@@ -22,24 +22,21 @@ fn solve1(input: &str) -> u64 {
     let (patterns, designs) = parse(input);
     let mut sum = 0;
     for design in designs {
-        if count(&design, &patterns) != 0 {
+        if count(design, &patterns) != 0 {
             sum += 1;
         }
     }
     sum
 }
 
-fn count(design: &str, patterns: &[String]) -> usize {
+fn count(design: &str, patterns: &[&str]) -> usize {
     count_paths(
         design,
         |prev| {
-            let mut next = vec![];
-            for pattern in patterns {
-                if prev.starts_with(pattern) {
-                    next.push(&prev[pattern.len()..]);
-                }
-            }
-            next
+            patterns
+                .iter()
+                .filter(|&pattern| prev.starts_with(pattern))
+                .map(|&pattern| &prev[pattern.len()..])
         },
         |s| s.is_empty(),
     )
@@ -54,7 +51,7 @@ fn solve2(input: &str) -> u64 {
     let (patterns, designs) = parse(input);
     let mut sum = 0;
     for design in designs {
-        let paths = count(&design, &patterns);
+        let paths = count(design, &patterns);
         sum += paths as u64;
     }
     sum

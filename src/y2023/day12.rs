@@ -53,10 +53,8 @@ fn solve(input: &str, counts: &[usize]) -> usize {
 
 fn gen_pattern(counts: &[usize]) -> Vec<char> {
     let mut state = vec!['.'];
-    for count in counts {
-        for _ in 0..*count {
-            state.push('#');
-        }
+    for &count in counts {
+        state.extend(iter::repeat_n('#', count));
         state.push('.');
     }
     state
