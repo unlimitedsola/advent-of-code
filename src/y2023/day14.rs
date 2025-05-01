@@ -80,7 +80,7 @@ fn tick(grid: &mut Grid) {
 
 fn weight(grid: &Grid) -> usize {
     grid.indexed_iter()
-        .filter(|(_, &c)| c == 'O')
+        .filter(|&(_, &c)| c == 'O')
         .map(|((y, _), _)| grid.rows() - y)
         .sum()
 }

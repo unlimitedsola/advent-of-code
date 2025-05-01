@@ -119,11 +119,7 @@ impl Map {
             .find_map(|(y, line)| {
                 line.iter().enumerate().find_map(
                     |(x, &c)| {
-                        if c == 'S' {
-                            Some(Pos { x, y })
-                        } else {
-                            None
-                        }
+                        if c == 'S' { Some(Pos { x, y }) } else { None }
                     },
                 )
             })

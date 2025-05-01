@@ -1,10 +1,10 @@
 use std::env;
-use std::fs::{create_dir_all, read_to_string, File};
+use std::fs::{File, create_dir_all, read_to_string};
 use std::io::Write;
 use std::path::PathBuf;
 use std::sync::LazyLock;
 
-use anyhow::{bail, Context, Result};
+use anyhow::{Context, Result, bail};
 use regex::Regex;
 use reqwest::blocking::Client;
 use reqwest::header::{COOKIE, USER_AGENT};

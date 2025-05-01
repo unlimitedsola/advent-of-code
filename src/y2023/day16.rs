@@ -1,6 +1,6 @@
 use grid::Grid;
 use indoc::indoc;
-use itertools::{chain, Itertools};
+use itertools::{Itertools, chain};
 
 use crate::aoc::input;
 

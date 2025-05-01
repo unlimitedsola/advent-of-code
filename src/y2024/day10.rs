@@ -23,7 +23,7 @@ fn solve1(input: &str) -> u64 {
     let grid = parse(input);
     let starting_pos = grid
         .indexed_iter()
-        .filter(|(_, &c)| c == '0')
+        .filter(|&(_, &c)| c == '0')
         .map(|x| x.0)
         .collect_vec();
     let mut sum = 0;
@@ -67,7 +67,7 @@ fn solve2(input: &str) -> u64 {
     let grid = parse(input);
     let starting_pos = grid
         .indexed_iter()
-        .filter(|(_, &c)| c == '0')
+        .filter(|&(_, &c)| c == '0')
         .map(|x| x.0)
         .collect_vec();
     let mut sum = 0;

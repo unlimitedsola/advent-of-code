@@ -2,7 +2,7 @@ use std::ops::Neg;
 
 use indoc::indoc;
 use itertools::Itertools;
-use nalgebra::{vector, SMatrix, Vector2, Vector3, Vector6};
+use nalgebra::{SMatrix, Vector2, Vector3, Vector6, vector};
 use num::Zero;
 
 use crate::aoc::input;

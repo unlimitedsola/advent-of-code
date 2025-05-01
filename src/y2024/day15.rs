@@ -38,7 +38,7 @@ fn solve1(input: &str) -> u64 {
     print_grid(&grid);
 
     grid.indexed_iter()
-        .filter(|(_, &c)| c == 'O')
+        .filter(|&(_, &c)| c == 'O')
         .map(|(pos, _)| (pos.0 * 100 + pos.1) as u64)
         .sum()
 }
@@ -103,7 +103,7 @@ fn solve2(input: &str) -> u64 {
     print_grid(&grid);
 
     grid.indexed_iter()
-        .filter(|(_, &c)| c == '[')
+        .filter(|&(_, &c)| c == '[')
         .map(|(pos, _)| (pos.0 * 100 + pos.1) as u64)
         .sum()
 }

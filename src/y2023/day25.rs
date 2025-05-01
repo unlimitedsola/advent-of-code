@@ -1,6 +1,6 @@
 use indoc::indoc;
-use petgraph::prelude::UnGraphMap;
 use rustworkx_core::connectivity::stoer_wagner_min_cut;
+use rustworkx_core::petgraph::prelude::UnGraphMap;
 
 use crate::aoc::input;
 

@@ -25,7 +25,7 @@ fn part2() {
                 "do()" => enable = true,
                 "don't()" => enable = false,
                 _ if enable => {
-                    return cap[1].parse::<u64>().unwrap() * cap[2].parse::<u64>().unwrap()
+                    return cap[1].parse::<u64>().unwrap() * cap[2].parse::<u64>().unwrap();
                 }
                 _ => (),
             }

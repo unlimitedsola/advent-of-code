@@ -33,7 +33,7 @@ fn solve1(input: &str) -> u64 {
         for key in keys.iter() {
             if key
                 .indexed_iter()
-                .filter(|(_, &c)| c == '#')
+                .filter(|&(_, &c)| c == '#')
                 .all(|(i, _)| lock.get(i.0, i.1) == Some(&'.'))
             {
                 fit += 1;

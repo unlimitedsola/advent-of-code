@@ -18,7 +18,7 @@ fn part1() {
 
 fn solve1(grid: Grid<char>) -> u64 {
     let mut visited: HashSet<(isize, isize)> = HashSet::new();
-    let pos = grid.indexed_iter().find(|(_, &c)| c == '^').unwrap().0;
+    let pos = grid.indexed_iter().find(|&(_, &c)| c == '^').unwrap().0;
     let mut pos = (pos.0 as isize, pos.1 as isize);
     visited.insert(pos);
     let mut dir = (-1, 0);
@@ -48,7 +48,7 @@ fn part2() {
 }
 
 fn solve2(mut grid: Grid<char>) -> u64 {
-    let s_pos = grid.indexed_iter().find(|(_, &c)| c == '^').unwrap().0;
+    let s_pos = grid.indexed_iter().find(|&(_, &c)| c == '^').unwrap().0;
     grid[s_pos] = '.';
     let s_pos = (s_pos.0 as isize, s_pos.1 as isize);
     let mut pos = s_pos;

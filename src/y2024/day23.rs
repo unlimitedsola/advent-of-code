@@ -2,8 +2,8 @@ use std::collections::HashSet;
 
 use indoc::indoc;
 use itertools::Itertools;
-use petgraph::graphmap::UnGraphMap;
 use rustworkx_core::connectivity::connected_components;
+use rustworkx_core::petgraph::graphmap::UnGraphMap;
 
 use crate::aoc::input;
 

@@ -38,7 +38,7 @@ fn solve1(grid: &Grid, steps: usize) -> usize {
     let mut cnt = 0;
     let mut vis = HashSet::new();
     let mut q = VecDeque::new();
-    let start = grid.indexed_iter().find(|(_, &c)| c == 'S').unwrap().0;
+    let start = grid.indexed_iter().find(|&(_, &c)| c == 'S').unwrap().0;
     let start = (start.0 as isize, start.1 as isize);
     q.push_back((start, 0));
     while let Some((pos, step)) = q.pop_front() {
