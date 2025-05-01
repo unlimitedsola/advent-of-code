@@ -8,7 +8,7 @@ fn part1() {
         .map(|l| {
             let mut digits = l.chars().filter(char::is_ascii_digit);
             let first = digits.next().unwrap();
-            let last = digits.last().unwrap_or(first);
+            let last = digits.next_back().unwrap_or(first);
             (first, last)
         })
         .map(|(a, b)| a.to_digit(10).unwrap() * 10 + b.to_digit(10).unwrap())

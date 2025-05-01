@@ -38,7 +38,7 @@ fn part2() {
 }
 
 fn expand(input: &str, counts: &[usize]) -> (String, Vec<usize>) {
-    (iter::repeat(input).take(5).join("?"), counts.repeat(5))
+    (iter::repeat_n(input, 5).join("?"), counts.repeat(5))
 }
 
 fn solve(input: &str, counts: &[usize]) -> usize {

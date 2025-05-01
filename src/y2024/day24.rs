@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 
 use indoc::indoc;
 use itertools::Itertools;
@@ -80,7 +80,7 @@ fn solve1(input: &str) -> u64 {
 
 #[test]
 fn part2() {
-    let (regs, wires) = parse(&input!());
+    let (_, wires) = parse(&input!());
 
     // manual inspection in generated graphviz
 
