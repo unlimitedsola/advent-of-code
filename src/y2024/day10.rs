@@ -41,10 +41,10 @@ fn trail_score(grid: &Grid<char>, pos: (isize, isize)) -> u64 {
         for sp in branches {
             for dir in [(0, 1), (0, -1), (1, 0), (-1, 0)] {
                 let pos = tuple_plus(sp, dir);
-                if let Some(&c) = grid.get(pos.0, pos.1) {
-                    if c == cc {
-                        branches_next.insert(pos);
-                    }
+                if let Some(&c) = grid.get(pos.0, pos.1)
+                    && c == cc
+                {
+                    branches_next.insert(pos);
                 }
             }
         }
@@ -84,10 +84,10 @@ fn trail_score_2(grid: &Grid<char>, pos: (isize, isize)) -> u64 {
         for sp in branches {
             for dir in [(0, 1), (0, -1), (1, 0), (-1, 0)] {
                 let pos = tuple_plus(sp, dir);
-                if let Some(&c) = grid.get(pos.0, pos.1) {
-                    if c == cc {
-                        branches_next.push(pos);
-                    }
+                if let Some(&c) = grid.get(pos.0, pos.1)
+                    && c == cc
+                {
+                    branches_next.push(pos);
                 }
             }
         }

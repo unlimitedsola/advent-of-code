@@ -34,10 +34,10 @@ fn xmas_count(grid: &Grid<char>, (x, y): (usize, usize)) -> u32 {
             let mut y = y as isize;
             x += dx;
             y += dy;
-            if let Some('M') = grid.get(x, y) {
-                if has_xmas(grid, (x, y), (dx, dy)) {
-                    cnt += 1;
-                }
+            if let Some('M') = grid.get(x, y)
+                && has_xmas(grid, (x, y), (dx, dy))
+            {
+                cnt += 1;
             }
         }
     }

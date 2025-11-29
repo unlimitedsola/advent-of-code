@@ -44,12 +44,11 @@ fn solve1(rules: &[Rule], updates: &[Update]) -> u32 {
 
 fn valid(rules: &[Rule], update: &Update) -> bool {
     for rule in rules {
-        if let Some((i, _)) = update.iter().find_position(|&&n| n == rule.0) {
-            if let Some((j, _)) = update.iter().find_position(|&&n| n == rule.1) {
-                if i > j {
-                    return false;
-                }
-            }
+        if let Some((i, _)) = update.iter().find_position(|&&n| n == rule.0)
+            && let Some((j, _)) = update.iter().find_position(|&&n| n == rule.1)
+            && i > j
+        {
+            return false;
         }
     }
     true
@@ -78,13 +77,12 @@ fn order(rules: &[Rule], update: &Update) -> Update {
     loop {
         let mut changed = false;
         for rule in rules {
-            if let Some((i, _)) = update.iter().find_position(|&&n| n == rule.0) {
-                if let Some((j, _)) = update.iter().find_position(|&&n| n == rule.1) {
-                    if i > j {
-                        update.swap(i, j);
-                        changed = true;
-                    }
-                }
+            if let Some((i, _)) = update.iter().find_position(|&&n| n == rule.0)
+                && let Some((j, _)) = update.iter().find_position(|&&n| n == rule.1)
+                && i > j
+            {
+                update.swap(i, j);
+                changed = true;
             }
         }
         if !changed {

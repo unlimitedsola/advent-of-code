@@ -76,10 +76,10 @@ fn drop(boxes: &mut [[[usize; 3]; 2]], i: Option<usize>) -> usize {
     let mut hmap = HeightMap::init(size[1], size[0], 0);
     let mut fall_cnt = 0;
     for (ii, [[x1, y1, z1], [x2, y2, z2]]) in boxes.iter_mut().enumerate() {
-        if let Some(i) = i {
-            if i == ii {
-                continue;
-            }
+        if let Some(i) = i
+            && i == ii
+        {
+            continue;
         }
         let peak = bi_closed_range(*x1, *x2)
             .cartesian_product(bi_closed_range(*y1, *y2))

@@ -78,10 +78,10 @@ impl System {
         let mut workflow = self.0.get("in").unwrap();
         loop {
             for rule in &workflow.rules {
-                if let Some(cond) = &rule.condition {
-                    if !cond.eval(part) {
-                        continue;
-                    }
+                if let Some(cond) = &rule.condition
+                    && !cond.eval(part)
+                {
+                    continue;
                 }
                 match &rule.destination {
                     Destination::Workflow(name) => {

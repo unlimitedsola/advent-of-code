@@ -13,7 +13,7 @@ fn part1() {
 
 type G<'a> = UnGraphMap<&'a str, ()>;
 
-fn parse(input: &str) -> G {
+fn parse(input: &str) -> G<'_> {
     UnGraphMap::from_edges(input.lines().flat_map(|line| {
         let (src, dst) = line.split_once(": ").unwrap();
         dst.split_ascii_whitespace().map(move |dst| (src, dst))

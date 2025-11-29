@@ -22,7 +22,7 @@ fn part2() {
     dbg!(solve2(&modules));
 }
 
-fn parse_modules(input: &str) -> HashMap<&str, Module> {
+fn parse_modules(input: &str) -> HashMap<&str, Module<'_>> {
     let modules: HashMap<_, _> = input
         .lines()
         .map(Module::parse)
@@ -30,10 +30,10 @@ fn parse_modules(input: &str) -> HashMap<&str, Module> {
         .collect();
     for (src, m) in modules.iter() {
         for dst in &m.dst {
-            if let Some(m) = modules.get(dst) {
-                if let ModuleType::Conjunction { states } = m.typ.borrow_mut().deref_mut() {
-                    states.insert(src, false);
-                }
+            if let Some(m) = modules.get(dst)
+                && let ModuleType::Conjunction { states } = m.typ.borrow_mut().deref_mut()
+            {
+                states.insert(src, false);
             }
         }
     }
@@ -105,12 +105,11 @@ fn pulse2<'a>(mm: &'a HashMap<&'a str, Module>, cnt: usize, rx_cnt: &mut HashMap
     let mut q = VecDeque::new();
     q.push_back(("button", "broadcaster", false));
     while let Some((src, dst, high)) = q.pop_front() {
-        if high {
-            if let Some(c) = rx_cnt.get_mut(src) {
-                if *c == 0 {
-                    *c = cnt;
-                }
-            }
+        if high
+            && let Some(c) = rx_cnt.get_mut(src)
+            && *c == 0
+        {
+            *c = cnt;
         }
         if let Some(m) = mm.get(dst) {
             let output = m.typ.borrow_mut().output(src, high);
