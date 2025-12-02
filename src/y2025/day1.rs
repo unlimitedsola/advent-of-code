@@ -1,3 +1,5 @@
+use indoc::indoc;
+
 use crate::aoc::input;
 
 #[test]
@@ -75,25 +77,27 @@ fn solve2(input: &str) -> u64 {
     zeros
 }
 
-const TEST_INPUT: &str = "L68
-L30
-R48
-L5
-R60
-L55
-L1
-L99
-R14
-L82";
+const EXAMPLE: &str = indoc! {"
+    L68
+    L30
+    R48
+    L5
+    R60
+    L55
+    L1
+    L99
+    R14
+    L82
+"};
 
 #[test]
 fn test_example() {
-    assert_eq!(solve1(TEST_INPUT), 3);
+    assert_eq!(solve1(EXAMPLE), 3);
 }
 
 #[test]
 fn test_example2() {
-    assert_eq!(solve2(TEST_INPUT), 6);
+    assert_eq!(solve2(EXAMPLE), 6);
 }
 
 #[test]
