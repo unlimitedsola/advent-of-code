@@ -52,25 +52,21 @@ fn solve2(input: &str) -> u64 {
 }
 
 fn max2(input: &str) -> u64 {
-    let mut chars = input.chars().enumerate().collect::<Vec<_>>();
-    chars.sort_by(|a, b| b.1.cmp(&a.1));
-    let chars_len = chars.len();
-
+    let chars = input.chars().collect::<Vec<_>>();
     let mut chosen = vec![];
-
-    let mut cur_idx = 0;
+    let mut start = 0;
     while chosen.len() < 12 {
-        for (idx, ch) in chars.iter_mut() {
-            if ch == &'x' {
-                continue;
-            }
-            if *idx <= chars_len - (12 - chosen.len()) && *idx >= cur_idx {
-                chosen.push(*ch);
-                cur_idx = *idx;
-                *ch = 'x';
-                break;
+        let end = chars.len() - (12 - chosen.len());
+        let mut idx = 0;
+        let mut ch = '0';
+        for (i, c) in chars[start..=end].iter().enumerate() {
+            if *c > ch {
+                idx = i;
+                ch = *c;
             }
         }
+        chosen.push(ch);
+        start += idx + 1;
     }
     chosen.iter().collect::<String>().parse().unwrap()
 }
